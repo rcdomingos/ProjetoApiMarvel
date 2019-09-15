@@ -1,0 +1,343 @@
+body {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+p,
+h3,
+figcaption {
+  font-family: "DM Serif Text", serif;
+}
+
+.texto-personagem p {
+  font-size: 1.2rem;
+}
+
+h1,
+h2 {
+  font-family: "Bangers", cursive;
+}
+
+h2 {
+  font-size: 3em;
+}
+
+.grid-personagem {
+  display: grid;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  grid-template-rows: 50px auto auto 150px;
+}
+
+.grid-home {
+  display: grid;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  grid-template-rows: 50px 100px auto 150px;
+}
+
+.subgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+div.busca,
+div.resultado,
+div.main {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.main {
+  padding-top: 2rem;
+}
+
+.fonte-vermelho {
+  color: #ed1d24;
+  text-shadow: #000 -1px -1px;
+}
+
+.header {
+  background-color: #ed1d24;
+  text-align: center;
+}
+#voltar {
+  text-align: right;
+}
+
+#voltar a {
+  text-decoration: none;
+  padding: 1rem;
+  font-family: "Bangers", cursive;
+  font-size: 2rem;
+  text-shadow: #000 1px 1px 1px;
+  color: #f8f603;
+  background-color: #e4e3e3;
+  padding: 1rem;
+  transition: all 0.9s;
+}
+
+#voltar a:hover {
+  text-shadow: #000 1px 1px 1px;
+  color: #070707;
+  background-color: #ffffff;
+  transition: all 1s;
+}
+
+img#logo {
+  height: 50px;
+  width: auto;
+  display: inline-block;
+}
+
+#form-buscar {
+  width: 600px;
+  padding: 0px;
+  height: 48px;
+  margin: 50px auto;
+}
+
+.revistas {
+  margin-top: 2rem;
+  background-color: #000000;
+  color: #fff;
+  padding-bottom: 2rem;
+  clear: both;
+}
+
+.revistas h2 {
+  padding-left: 2rem;
+}
+
+.footer {
+  background-color: #ea2328;
+  position: relative;
+  padding: 1rem;
+  color: #ffffff;
+}
+
+.footer a {
+  color: #ffffff;
+}
+
+/* .main {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray; 
+}
+span#span-perso {
+  -webkit-filter: unset;
+  filter: unset;
+} */
+
+#logo-footer {
+  width: auto;
+  height: 100px;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.foto-personagem img {
+  width: 300px;
+}
+
+.foto-personagem {
+  background: #ffffff;
+  padding: 1rem;
+  box-shadow: 0 0.2rem 1.2rem rgba(0, 0, 0, 0.2);
+  width: 300px;
+  transform: scale(0.9, 0.9) rotate(5deg);
+}
+
+div.foto-personagem {
+  float: left;
+  margin-right: 2rem;
+}
+
+div.texto-personagem {
+  margin-right: 2rem;
+}
+
+#personagem {
+  padding-left: 10px;
+  border: 1px solid;
+  border-radius: 5px 0px 0px 5px;
+  color: #797979;
+  height: 48px;
+  width: 100%;
+  /* float: left; */
+}
+
+.pg-home img {
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 4px #999;
+}
+
+div.resultado {
+  min-height: 70vh;
+}
+
+.lista-resultado {
+  padding: 10px;
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: 1px 1px 4px #999;
+}
+
+.lista-resultado ol {
+  margin: 0 auto;
+}
+
+.lista-resultado li {
+  display: inline-block;
+  vertical-align: top;
+  width: 30%;
+  margin: 1rem 0.5rem;
+  padding: 5px 5px 20px 5px;
+  background-color: #000000;
+  border-radius: 4px;
+}
+
+.lista-resultado li img {
+  width: 100%;
+}
+
+.lista-resultado li:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 5px #333;
+  transition: 0.7s;
+  transform: scale(1.2) rotate(-5deg);
+}
+
+.lista-resultado h2,
+.pg-home h2 {
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.lista-resultado a {
+  color: #333;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.lista-resultado {
+  background: url("../img/fundo-pb.jpg") repeat;
+}
+
+#botao-buscar {
+  border: 0px solid;
+  border-radius: 0px 5px 5px 0px;
+  height: 48px;
+  width: 20%;
+  /* float: left; */
+  background-color: #000000;
+  color: #ffffff;
+  margin-left: -5px;
+}
+
+#img-inicial {
+  width: 100%;
+}
+
+figure {
+  display: block;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+.revista figure {
+  background: #ffffff;
+  color: #000;
+  border: 1rem solid #ffffff;
+}
+
+.revista figcaption {
+  min-height: 100px;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.revista img {
+  width: 100%;
+  border: 1px solid #000;
+}
+
+.autocomplete {
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*contaniter dos itens ficar o mesmo do input*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+/*Cor do hover quando selecionado*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9;
+}
+
+/*Cor de quando selecionar com as setas*/
+.autocomplete-active {
+  background-color: #ea2328 !important;
+  color: #ffffff;
+}
+
+/*Ajuste mobile*/
+@media (max-width: 575.98px) {
+  div.busca,
+  div.revistas,
+  div.main {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  #form-buscar {
+    width: 100%;
+  }
+
+  .subgrid {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 300px 300px 300px;
+    grid-gap: 10px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .revista img {
+    height: 300px;
+  }
+}
