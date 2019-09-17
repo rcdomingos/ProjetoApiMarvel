@@ -1,4 +1,6 @@
 <?php
+
+opcache_reset();
 require_once "dados.php";
 
 // echo gerarUrl('S', 'lupaPersonagens');
@@ -6,15 +8,13 @@ require_once "dados.php";
 $nomeDigitado = isset($_POST['personagem']) ? $_POST['personagem'] : null;
 $status = false;
 
-if (!is_null($nomeDigitado)) {
+if (!is_null($nomeDigitado) && $nomeDigitado != '' ) {
     $Listapersonagens = gerarPesquisa($nomeDigitado);
     $status = true;
 } else {
     $status = false;
 }
-
 // $Listapersonagens = gerarPesquisa('S');
-
 ?>
 
 <!DOCTYPE html>
@@ -45,32 +45,30 @@ if (!is_null($nomeDigitado)) {
 <?php
 // <?php echo $Listapersonagens['nome'][1009552]
 if ($status) {
-    echo "<section> <h2 class='fonte-vermelho'>Resultado da Busca</h2> <div class='lista-resultado'><nav><ol>";
+    echo "<section>\n <h2 class='fonte-vermelho'>Resultado da Busca</h2>\n <div class='lista-resultado'> \n <nav><ol>";
     //lista de herois
     foreach ($Listapersonagens['nome'] as $key => $value) {
-        echo "<li><a href='personagem.php?id=" . $key . "'>";
+        echo "<li><a href='personagem.php?id=" . $key . "'>\n";
         echo "<figure><img src= '" . $Listapersonagens['imagem'][$key] . "'alt='Imagem: " . $Listapersonagens['nome'][$key] . "'>";
         echo "<figcaption>" . $Listapersonagens['nome'][$key] . "</figcaption></figure>";
-        echo "</a></li>";
+        echo "</a></li>\n";
         // print_r($key);
         // print_r( $value);
     }
-    echo "</ol></nav></div></section>";
+    echo "</ol></nav></div> \n </section>";
 } else {
-    echo "<section class='pg-home'>";
-    echo "<h2 class='fonte-vermelho'> Personagens Marvel</h2>";
-    echo "<img src='img/the-marvel-universe.jpeg' alt='Personagens do Universo Marvel'>";
-    echo "</section>";
+    echo "<section> \n <h2 class='fonte-vermelho'> Personagens Marvel</h2>\n";
+    echo "<div class='pg-home'>\n";
+    echo "<img src='img/the-marvel-universe.jpeg' alt='Personagens do Universo Marvel'>\n";
+    echo "</div></section>\n";
 }
 ?>
     </div>
     <div class="footer">
-      <img id="logo-footer" src="img/Marvel-Character-Rights.jpg" alt="Logo com os personagens da marvel">
-      <p><small>Desenvolvido por Reginaldo C Domingos </small></p>
-      <p><small><a href="http://marvel.com">Data provided by Marvel. © 2019 MARVEL</a></small></p>
+        <img id="logo-footer" src="img/Marvel-Character-Rights.jpg" alt="Logo com os personagens da marvel">
+        <p><small>Desenvolvido por Reginaldo C Domingos </small></p>
+        <p><small><a href="http://marvel.com">Data provided by Marvel. © 2019 MARVEL</a></small></p>
     </div>
-
-
   </div>
 </body>
 </html>

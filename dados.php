@@ -71,13 +71,16 @@ function gerarInformacoes($nomePesquisa)
 //função para testar a coneção da url informada
 function testarConexaoUrl($url)
 {
-    $h = get_headers($url);
-    $status = array();
-    preg_match('/HTTP\/.* ([0-9]+) .*/', $h[0], $status);
+    $h = @get_headers($url);
+    if ($h == false) {
+        return false;
+    } else {
+        $status = array();
+        preg_match('/HTTP\/.* ([0-9]+) .*/', $h[0], $status);
 
-    // return ($status[1] == 200);
-    return $status[1];
-
+        // return ($status[1] == 200);
+        return $status[1];
+    }
 }
 
 //função para pegar 3 revistas aleatorios do personagem
@@ -85,7 +88,7 @@ function gerarRevistas($idPersonagem)
 {
     $url = gerarUrl($idPersonagem, 'comics');
     //echo $url;
-
+  
     //buscando o arquivo json
     $json = file_get_contents($url);
     $dados = json_decode($json, false);
@@ -115,26 +118,32 @@ function gerarPesquisa($nomePesquisa)
 {
     $url = gerarUrl($nomePesquisa, 'lupaPersonagens');
 
-    //buscando o arquivo json
-    $json = file_get_contents($url);
-    $dados = json_decode($json, false);
+    $status = testarConexaoUrl($url);
 
-    if ($dados->data->total > 0) {
+    if ($status) {
+        //buscando o arquivo json
+        $json = file_get_contents($url);
+        $dados = json_decode($json, false);
 
-        $nomes = $dados->data->results;
-        $count = $dados->data->count;
+        if ($dados->data->total > 0) {
 
-        for ($i = 0; $i < $count; $i++) {
-            $imgPersonagem[$nomes[$i]->id] = $nomes[$i]->thumbnail->path . "/standard_fantastic." . $nomes[$i]->thumbnail->extension;
-            $personagem[$nomes[$i]->id] = $nomes[$i]->name;
+            $nomes = $dados->data->results;
+            $count = $dados->data->count;
+
+            for ($i = 0; $i < $count; $i++) {
+                $imgPersonagem[$nomes[$i]->id] = $nomes[$i]->thumbnail->path . "/standard_fantastic." . $nomes[$i]->thumbnail->extension;
+                $personagem[$nomes[$i]->id] = $nomes[$i]->name;
+            }
+
+        } else {
+            $imgPersonagem[1009652] = "img/not-found.jpg";
+            $personagem[1009652] = "Not Found";
         }
 
         $infoPersonagem = array('nome' => $personagem, 'imagem' => $imgPersonagem);
+        // print_r($infoPersonagem);
+        // var_dump($nomes);
+        // var_dump($infoPersonagem);
+        return $infoPersonagem;
     }
-
-    // print_r($infoPersonagem);
-    // var_dump($nomes);
-    // var_dump($infoPersonagem);
-    return $infoPersonagem;
-
 }
