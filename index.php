@@ -1,6 +1,6 @@
 <?php
 
-opcache_reset();
+//opcache_reset();
 require_once "dados.php";
 
 // echo gerarUrl('S', 'lupaPersonagens');

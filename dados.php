@@ -12,18 +12,13 @@ function gerarUrl($busca, $type)
 
     switch ($type) {
         case 'personagem':
-            $nameCharacter = $busca;
-            return $urlName = "http://gateway.marvel.com/v1/public/characters?id=$nameCharacter&ts=$ts&apikey=$publicKey&hash=$hash"; //Personagens pelo nome
+            $idPersonagem = $busca;
+            return $urlName = "http://gateway.marvel.com/v1/public/characters?id=$idPersonagem&ts=$ts&apikey=$publicKey&hash=$hash"; //Personagens pelo nome
             break;
 
         case 'comics':
             $idPersonagem = $busca;
             return $urlComics = "http://gateway.marvel.com/v1/public/characters/$idPersonagem/comics?ts=$ts&apikey=$publicKey&hash=$hash";
-            break;
-
-        case 'listaPersonagens':
-            //$limit = "total": 1492,
-            return $urlComics = "http://gateway.marvel.com/v1/public/characters?limit=50&ts=$ts&apikey=$publicKey&hash=$hash";
             break;
 
         case 'lupaPersonagens':
@@ -88,7 +83,7 @@ function gerarRevistas($idPersonagem)
 {
     $url = gerarUrl($idPersonagem, 'comics');
     //echo $url;
-  
+
     //buscando o arquivo json
     $json = file_get_contents($url);
     $dados = json_decode($json, false);
@@ -106,14 +101,11 @@ function gerarRevistas($idPersonagem)
             $comics[$i] = array('title' => "Not Found", 'cover' => "img/not-found.jpg");
         }
     }
-    // $comics = array($revista1, $revista2, $revista3);
     //print_r($comics);
-
     return $comics;
-
 }
 
-/** */
+/** função para pesquisar os personagens digitados */
 function gerarPesquisa($nomePesquisa)
 {
     $url = gerarUrl($nomePesquisa, 'lupaPersonagens');
@@ -141,8 +133,6 @@ function gerarPesquisa($nomePesquisa)
         }
 
         $infoPersonagem = array('nome' => $personagem, 'imagem' => $imgPersonagem);
-        // print_r($infoPersonagem);
-        // var_dump($nomes);
         // var_dump($infoPersonagem);
         return $infoPersonagem;
     }
